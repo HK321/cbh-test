@@ -16,3 +16,41 @@ Based on the information given, break this ticket down into 2-5 individual ticke
 You will be graded on the level of detail in each ticket, the clarity of the execution plan within and between tickets, and the intelligibility of your language. You don't need to be a native English speaker, but please proof-read your work.
 
 ## Your Breakdown Here
+
+### Ticket#1
+Create a table `facilities_agents` with columns `id(PK auto increment), facility_id, agent_id, custom_agent_id` in the database.
+
+**ETA**: 1.5 hours
+
+### Ticket#2
+- Add an input field to accept custom agent ID on the form where agent is assigned to the shift. 
+- At time of submission, map it to the newly created `facilities_agents` table with agent's original ID and facility ID. 
+
+**ETA**: 2.5 hours
+
+### Ticket#3
+- Create a function `getAgentHours(facilityId: number)`
+    - This function expects `facilityId` as a parameter.
+    - It should fetch agents and their `customAgentId's` based on `facilityId` from the `facilities_agents` table.
+    - It should fetch shifts data for each agent recieved in **step 2** and calculate total hours (can be done via SQL or ORM if any)
+    - Format the data in the following format:
+    `[{
+        customAgentId: 12,
+        shiftId: 12,
+        hours: 10,
+        shiftMeta: {...},
+        agentMeta: {...}
+    }, {
+        customAgentId: 12,
+        shiftId: 12,
+        hours: 10,
+        shiftMeta: {...},
+        agentMeta: {...}
+    },...]`
+- Send this data to  `generateReport` method in order to generate the PDF report. 
+
+**ETA**: 4 hours
+
+### Assumptions
+- An agent can work for multiple facilities i.e he can work at two different shifts (overtime)
+- Shifts table holds ids of both Agents and Facilities tables

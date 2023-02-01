@@ -9,3 +9,18 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+### What the function does?
+The function returns a `key` based on the input parameter it recieves. 
+- If no parameter is supplied, it returns trivial key which is `"0"`
+- If an empty object is passed it generates and returns a hash of length 128
+- If a value is passed for partitionKey it returns that key
+- If length of partionKey is greater than maximum allowed length, it generates and returns a key of length 128.
+
+### My improvements
+It was difficult to comprehend the function because all the logic of candidate creation and processing was in one place so I extracted some code and added it to a new function called `createCandidate`. This new method gets called when the original function receives a parameter. 
+
+Doing so, I have moved the logic for the 2nd and 3rd points mentioned above in this function making the code more readable. Now the logic for candidate creation is in this new function and the processing is still in the original function.
+
+I have written more tests to cover all the scenarios and I have also modified `package.json` and added the `test:coverage` command to generate code coverage. You can use it to generate coverage reports.
+
+`npm run test:coverage`
