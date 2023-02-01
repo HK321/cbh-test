@@ -31,7 +31,8 @@ Create a table `facilities_agents` with columns `id(PK auto increment), facility
 ### Ticket#3
 - Create a function `getAgentHours(facilityId: number)`
     - This function expects `facilityId` as a parameter.
-    - It should fetch agents and their `customAgentId's` based on `facilityId` from the `facilities_agents` table.
+    - It should fetch `customAgentId's` and `agentId's` based on `facilityId` from the `facilities_agents` table.
+    - It should use `agentId's` to fetch agent details from `Agents` table.
     - It should fetch shifts data for each agent recieved in **step 2** and calculate total hours (can be done via SQL or ORM if any)
     - Format the data in the following format:
     `[{
